@@ -1,22 +1,16 @@
 from functions import Dia
 
 
+d = Dia()
+d.anio = int(input("Ingresar año: "))
+Dia.validar_fecha(d, d.anio, d.mes, d.dia)
+    
+d.mes = int(input("Ingresar mes: "))
+Dia.validar_fecha(d, d.anio, d.mes, d.dia)
 
-anio = int(input("Ingresar año: "))
+d.dia = int(input("Ingresar día: "))
+Dia.validar_fecha(d, d.anio, d.mes, d.dia)
 
-mes = int(input("Ingresar mes: "))
-dia = int(input("Ingresar día: "))
-d = Dia(anio, mes, dia)
-'''
-fecha_valida = False
-while not fecha_valida:
-    try:
-        fecha_valida = d.validar_fecha(anio, mes , dia)
-    except:
-        fecha_valida = False
-        anio = int(input("Ingresar año: "))
-        mes = int(input("Ingresar mes: "))
-        dia = int(input("Ingresar día: "))
-'''
+d = Dia(d.anio, d.mes, d.dia)
 
-print(f"la fecha es {d.nombre_de_dia(d.dia_semana)}  del mes {d.mes}, del año {d.anio}")
+print(f"la fecha es {d.nombre_de_dia(d.dia_semana)} {d.dia} de {d.nombre_de_mes(d.mes)}, del año {d.anio}")

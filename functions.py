@@ -1,6 +1,5 @@
 class Dia:
     def __init__(self, anio = 1970, mes = 1, dia = 1):
-            self.validar_fecha(anio, mes, dia)
             self.anio = anio
             self.mes = mes
             self.dia = dia 
@@ -14,12 +13,20 @@ class Dia:
         return es_bisiesto
     
     def validar_fecha(self, anio, mes, dia):
+        
         if anio < 0:
-            raise ValueError("Ingresar un año D.C.")
+                raise ValueError("Ingresar un año D.C.")    
         if mes <1 or mes > 12:
-            raise ValueError("Ingresar un mes válido")
-        if dia < 0 or dia > 31: 
-            raise ValueError("Ingresar un día que exista")
+            raise ValueError("Ingresar un mes válido") 
+        if Dia.anio_bisiesto == True:
+            list_dias = [31,28,31,30,31,30,31,31,30,31,30,31]
+            if dia < 1 or dia > list_dias[mes-1]:
+                raise ValueError("Ingresar un día que exista")
+        else:
+            list_dias = [31,29,31,30,31,30,31,31,30,31,30,31]     
+            if dia < 1 or dia > list_dias[mes-1]:
+                raise ValueError("Ingresar un día que exista")
+        
         return True
 
     def zeller(self, anio, mes, dia):
@@ -32,3 +39,5 @@ class Dia:
     def nombre_de_dia(self, numero_dia):
         return ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][numero_dia]
         
+    def nombre_de_mes(self, numero_mes):
+        return ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"][(numero_mes-1)]
